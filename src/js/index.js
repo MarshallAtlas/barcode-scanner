@@ -100,9 +100,10 @@ import './components/clipboard-copy.js';
         throw new Error(NO_BARCODE_DETECTED);
       }
 
+      window.location.href = `next.html?barcode=${encodeURIComponent(barcodeValue)}`;
       window.cancelAnimationFrame(rafId);
       showResult(barcodeValue, cameraResultsEl);
-      addToHistory(barcodeValue);
+      addToHistory(barcodeValue); //barcode value is the one inside the barcode
       scanInstructionsEl.hidden = true;
       scanBtn.hidden = false;
       scanFrameEl.hidden = true;

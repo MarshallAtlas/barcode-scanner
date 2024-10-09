@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Barcode Data</title>
+  <meta name="description" content="Page to display barcode data.">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding: 50px;
+    }
+    .barcode-result {
+      margin-top: 20px;
+      font-size: 1.5em;
+      color: #333;
+    }
+  </style>
+</head>
+<body>
+  <h1>Scanned Barcode</h1>
+  <div class="barcode-result" id="barcodeResult">Loading...</div>
+
+  <script>
+    // Function to get query parameter from URL
+    function getQueryParam(param) {
+      const urlParams = new URLSearchParams(window.location.search);
+      return urlParams.get(param);
+    }
+
+    // Get the barcode value from the URL and display it
+    const barcodeValue = getQueryParam('barcode');
+
+    if (barcodeValue) {
+      document.getElementById('barcodeResult').textContent = `Barcode: ${barcodeValue}`;
+    } else {
+      document.getElementById('barcodeResult').textContent = 'No barcode data found.';
+    }
+  </script>
+</body>
+</html>
