@@ -87,6 +87,7 @@ import './components/clipboard-copy.js';
    *
    * @returns {Promise<void>} - A Promise that resolves when the barcode is detected.
    */
+
   async function scan() {
     log('Scanning...');
 
@@ -100,14 +101,23 @@ import './components/clipboard-copy.js';
         throw new Error(NO_BARCODE_DETECTED);
       }
 
-      window.location.href = `next.html?barcode=${encodeURIComponent(barcodeValue)}`;
+      // test for reading and writing
+      // if read
+      //  write function that just reads the information from the ID from barcode value
+      // else if write
+      //   write function, after scanning barcode get ID of asset from barcode value
+      //   ask user input on needed fields to update.
+      //   confirm updated value from fields
+
+      window.location.href = `/next.html?barcode=${encodeURIComponent(barcodeValue)}`;
+
       window.cancelAnimationFrame(rafId);
-      showResult(barcodeValue, cameraResultsEl);
-      addToHistory(barcodeValue); //barcode value is the one inside the barcode
-      scanInstructionsEl.hidden = true;
-      scanBtn.hidden = false;
-      scanFrameEl.hidden = true;
-      triggerScanEffects();
+      // showResult(barcodeValue, cameraResultsEl);
+      // addToHistory(barcodeValue); //barcode value is the one inside the barcode
+      // scanInstructionsEl.hidden = true;
+      // scanBtn.hidden = false;
+      // scanFrameEl.hidden = true;
+      // triggerScanEffects();
       return;
     } catch {
       // If no barcode is detected, the error is caught here.
